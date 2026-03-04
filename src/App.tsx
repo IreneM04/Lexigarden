@@ -99,7 +99,7 @@ const Header = ({ stats, isSaving }: { stats: any, isSaving: boolean }) => (
 
 export default function App() {
   const [gameState, setGameState] = useState<GameState>(INITIAL_STATE);
-  const [selectedCrop, setSelectedCrop] = useState<string>('corn');
+  const [selectedCrop, setSelectedCrop] = useState<string>('Corn');
   const [activeTab, setActiveTab] = useState<'farm' | 'notebook' | 'stats' | 'quests' | 'market' | 'learn'>('farm');
   const [isActionLoading, setIsActionLoading] = useState(false);
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error', message: string } | null>(null);
@@ -196,6 +196,8 @@ export default function App() {
         const challengeData = await generateGrowthChallenge(plot.word!, plot.growthStage);
         setActiveChallenge({ type: 'growing', plotId, challengeData });
         setActiveTab('learn');
+      } catch (e: any) {
+        setFeedback({ type: 'error', message: 'Failed to start challenge.' });
       } finally { setIsActionLoading(false); }
     } else if (plot.status === 'mature') {
       setActiveChallenge({ type: 'risk', plotId });
@@ -206,6 +208,11 @@ export default function App() {
     if (plantingPlotId === null) return;
     const plotId = plantingPlotId;
     const crop = CROPS[cropId];
+    if (!crop) {
+      setFeedback({ type: 'error', message: 'Invalid crop selected.' });
+      return;
+    }
+    
     setSelectedCrop(cropId);
     setPlantingPlotId(null);
 
@@ -227,7 +234,12 @@ export default function App() {
         setActiveChallenge({ type: 'planting', plotId, wordData });
         setActiveTab('learn');
         prefetchWord(crop.category);
-      } finally { setIsActionLoading(false); }
+      } catch (e: any) {
+        console.error('Planting failed', e);
+        setFeedback({ type: 'error', message: e.message || 'Failed to generate word. Check your API key.' });
+      } finally { 
+        setIsActionLoading(false); 
+      }
     }
   };
 

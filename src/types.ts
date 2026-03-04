@@ -103,13 +103,13 @@ export interface Crop {
 }
 
 export const CROPS: Record<string, Crop> = {
-  corn: { id: 'corn', name: 'Corn', baseValue: 5, emoji: '🌽', category: 'Life', growthCoefficient: 1.0 },
-  carrot: { id: 'carrot', name: 'Carrot', baseValue: 10, emoji: '🥕', category: 'Action', growthCoefficient: 1.1 },
-  tulip: { id: 'tulip', name: 'Tulip', baseValue: 15, emoji: '🌷', category: 'Emotion', growthCoefficient: 1.2 },
-  wheat: { id: 'wheat', name: 'Wheat', baseValue: 20, emoji: '🌾', category: 'Academic', growthCoefficient: 1.4 },
-  grape: { id: 'grape', name: 'Grape', baseValue: 30, emoji: '🍇', category: 'Business', growthCoefficient: 1.5 },
-  pine: { id: 'pine', name: 'Pine', baseValue: 50, emoji: '🌲', category: 'Abstract', growthCoefficient: 1.8 },
-  ginseng: { id: 'ginseng', name: 'Ginseng', baseValue: 80, emoji: '🌿', category: 'Technical', growthCoefficient: 2.0 },
+  Corn: { id: 'Corn', name: 'Corn', baseValue: 5, emoji: '🌽', category: 'Life', growthCoefficient: 1.0 },
+  Carrot: { id: 'Carrot', name: 'Carrot', baseValue: 10, emoji: '🥕', category: 'Action', growthCoefficient: 1.1 },
+  Tulip: { id: 'Tulip', name: 'Tulip', baseValue: 15, emoji: '🌷', category: 'Emotion', growthCoefficient: 1.2 },
+  Wheat: { id: 'Wheat', name: 'Wheat', baseValue: 20, emoji: '🌾', category: 'Academic', growthCoefficient: 1.4 },
+  Grape: { id: 'Grape', name: 'Grape', baseValue: 30, emoji: '🍇', category: 'Business', growthCoefficient: 1.5 },
+  Pine: { id: 'Pine', name: 'Pine', baseValue: 50, emoji: '🌲', category: 'Abstract', growthCoefficient: 1.8 },
+  Ginseng: { id: 'Ginseng', name: 'Ginseng', baseValue: 80, emoji: '🌿', category: 'Technical', growthCoefficient: 2.0 },
 };
 
 export const SEED_PACKS: SeedPack[] = [
